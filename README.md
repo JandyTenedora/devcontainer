@@ -7,7 +7,9 @@ Runs Claude Code in an isolated Docker container with access only to the repo it
 | Resource | Inside container | Notes |
 |---|---|---|
 | Repo files | Yes (read/write) | The repo root is mounted at `/workspace` |
-| `~/.claude` | Yes | Auth tokens — needed for Claude Code to function |
+| `~/.claude` | Yes | Claude Code state — history, sessions, settings |
+| `~/.claude.json` | Yes | Claude Code config file |
+| `~/.claude_oauth` | Yes | OAuth token — needed for auth |
 | `~/.gitconfig` | Yes (readonly) | Name, email, aliases |
 | `~/.ssh` | No | Keys never enter the container |
 | Rest of host filesystem | No | |
