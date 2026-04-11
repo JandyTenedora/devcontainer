@@ -5,4 +5,4 @@ if [ -z "$GIT_TOKEN" ]; then
   echo "Warning: GIT_TOKEN is not set. Git authentication will not work."
 fi
 
-DOCKER_UID=$(id -u) docker compose -f "$(dirname "$0")/docker-compose.yml" run --rm claude
+DOCKER_UID=$(id -u) docker compose -f "$(dirname "$0")/docker-compose.yml" run --rm --build claude

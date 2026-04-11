@@ -79,7 +79,11 @@ From the project root:
 ./.devcontainer/start-claude
 ```
 
-The container builds on first run. Subsequent runs are instant. Claude Code starts immediately.
+Uses the existing image — fast. After pulling devcontainer updates, rebuild the image first:
+
+```sh
+./.devcontainer/start-claude-rebuild
+```
 
 If you need a shell instead:
 
