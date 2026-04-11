@@ -11,6 +11,9 @@ RUN chmod +x /usr/local/bin/askpass
 
 RUN npm install -g @anthropic-ai/claude-code
 
+RUN git config --system url."https://github.com/".insteadOf "git@github.com:" && \
+    git config --system url."https://".insteadOf "ssh://"
+
 USER node
 
 CMD ["claude"]
