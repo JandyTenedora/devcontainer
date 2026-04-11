@@ -2,7 +2,7 @@ FROM node:lts-alpine
 
 ARG USER_UID=1000
 
-RUN apk add --no-cache bash git shadow curl openssh-client && \
+RUN apk add --no-cache bash git git-lfs shadow curl openssh-client && \
     usermod -u ${USER_UID} node && \
     chown -R node:node /home/node
 
