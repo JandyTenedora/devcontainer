@@ -3,7 +3,7 @@ services:
     build:
       context: .
       args:
-        USER_UID: ${UID:-1000}
+        USER_UID: ${DOCKER_UID:-1000}
     volumes:
       - ..:/workspace
       - ${HOME}/.claude:/home/node/.claude
