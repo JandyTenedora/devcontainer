@@ -18,18 +18,13 @@ Git authentication uses a scoped PAT via `GIT_ASKPASS` — the token is injected
 
 ## One-time setup
 
-### 1. Authenticate Claude Code on your host
+### 1. Get your Claude Code OAuth token
 
-Do this once, outside any container. The token is saved to `~/.claude` on your host and picked up automatically by every container via the mount.
+Claude Code → Settings → get your long-lived OAuth token. Add it to `~/.zshrc` so it's available in every session without re-exporting:
 
 ```sh
-npm install -g @anthropic-ai/claude-code
-claude
+echo 'export CLAUDE_CODE_OAUTH_TOKEN=your-token-here' >> ~/.zshrc
 ```
-
-The browser opens normally on macOS and you complete the OAuth flow. You can uninstall Claude Code from the host afterwards — the token file stays.
-
-If the token ever expires, repeat this step.
 
 ### 2. Create a GitHub fine-grained PAT
 
@@ -67,6 +62,8 @@ git -C .devcontainer pull
 ## Per-session workflow
 
 ### 1. Export your PAT
+
+`CLAUDE_CODE_OAUTH_TOKEN` is long-lived — set it once in `~/.zshrc` (see one-time setup). For the PAT, export a fresh one each session:
 
 ```sh
 export GIT_TOKEN=github_pat_xxxx

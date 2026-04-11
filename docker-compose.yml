@@ -9,6 +9,7 @@ services:
       - ${HOME}/.claude:/home/node/.claude
       - ${HOME}/.gitconfig:/home/node/.gitconfig:ro
     environment:
+      CLAUDE_CODE_OAUTH_TOKEN: ${CLAUDE_CODE_OAUTH_TOKEN:-}
       GIT_TOKEN: ${GIT_TOKEN:-}
       GIT_ASKPASS: /usr/local/bin/askpass
     working_dir: /workspace
