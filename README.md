@@ -43,21 +43,36 @@ Store it in a password manager.
 
 ---
 
-## Per-session workflow
+## Adding to a new repo
 
-### 1. Copy this folder into the repo
+`.devcontainer` is local-only — it should never be committed or pushed to the project repo.
+
+From the root of the target repo:
 
 ```sh
-cp -r /path/to/this/folder repo/.devcontainer
+echo '.devcontainer' >> .gitignore
+git clone git@github.com:JandyTenedora/devcontainer.git .devcontainer
 ```
 
-### 2. Export your PAT
+The cloned directory has its own `.git`, so the parent repo won't track it. The `.gitignore` entry keeps it out of `git status` noise.
+
+To pull updates in the future:
+
+```sh
+git -C .devcontainer pull
+```
+
+---
+
+## Per-session workflow
+
+### 1. Export your PAT
 
 ```sh
 export GIT_TOKEN=github_pat_xxxx
 ```
 
-### 3. Run
+### 2. Run
 
 From the project root:
 
@@ -73,7 +88,7 @@ If you need a shell instead:
 docker compose -f .devcontainer/docker-compose.yml run --rm claude sh
 ```
 
-### 4. When done
+### 3. When done
 
 Revoke the PAT on GitHub — Settings → Developer settings → Personal access tokens → Revoke.
 
