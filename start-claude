@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+if [ -z "$GIT_TOKEN" ]; then
+  echo "Warning: GIT_TOKEN is not set. Git authentication will not work."
+fi
+
+docker compose -f "$(dirname "$0")/docker-compose.yml" run --rm claude
