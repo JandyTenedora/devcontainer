@@ -3,8 +3,10 @@ FROM node:lts-alpine
 ARG USER_UID=1000
 
 RUN apk add --no-cache bash git git-lfs shadow curl openssh-client && \
-    usermod -u ${USER_UID} node && \
+    usermod -u ${USER_UID} -s /bin/bash node && \
     chown -R node:node /home/node
+
+ENV SHELL=/bin/bash
 
 COPY askpass.sh /usr/local/bin/askpass
 RUN chmod +x /usr/local/bin/askpass
